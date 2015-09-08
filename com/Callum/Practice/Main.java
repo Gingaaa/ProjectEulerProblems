@@ -63,9 +63,9 @@ public class Main
     {
         int highest=0, iHigh=0, jHigh=0;
 
-        for(int i=999; i>0; i--)
+        for(int i=999; i>99; i--)
         {
-            for(int j=i; j>0; j--)
+            for(int j=i; j>99; j--)
             {
                 if(helperMethods.isPalindrome(i*j))
                 {
