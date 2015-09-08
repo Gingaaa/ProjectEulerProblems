@@ -6,7 +6,7 @@ package com.Callum.Practice;
  * This is a class which will not contain any permanent code, I just use it
  * to quickly check the output of things I am not sure about
  */
-public class Methods
+public class TestMethods
 {
     public static void main(String[] args)
     {
