@@ -67,6 +67,8 @@ public class Main
         {
             for(int j=i; j>99; j--)
             {
+                if(i*j <= highest)  //stops checking numbers if it's impossible to be higher than current highest palindrome
+                    break;
                 if(helperMethods.isPalindrome(i*j))
                 {
                     if(i*j > highest)
