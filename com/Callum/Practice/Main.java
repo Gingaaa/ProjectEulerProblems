@@ -1,8 +1,8 @@
 package com.Callum.Practice;
 
-import com.Callum.Practice.PrimeMethods;
-
-public class Main {
+public class Main
+{
+    HelperMethods helperMethods = new HelperMethods();
 
     public static void main(String[] args)
     {
@@ -10,8 +10,9 @@ public class Main {
 	    /*
 	    System.out.print(run.problem1());
 	    System.out.print(run.problem2());
+	    System.out.print(run.problem3());
 	     */
-        System.out.print(run.problem3());
+        System.out.print(run.problem4());
 
 
 
@@ -35,6 +36,7 @@ public class Main {
             result=x+y;
             if(result%2==0)
                 sum=sum+result;
+            //noinspection SuspiciousNameCombination
             x=y;
             y=result;
         }
@@ -43,9 +45,8 @@ public class Main {
     private long problem3() //find the prime factors of the target
     {
         long target=600851475143L, curPrime=2;
-        PrimeMethods primeMethods = new PrimeMethods();
 
-        while(!primeMethods.isPrime(target)) //If the target is a prime, it is the final and largest prime factor
+        while(!helperMethods.isPrime(target)) //If the target is a prime, it is the final and largest prime factor
         {
             if(target%curPrime == 0) //if the target divides evenly then that prime is a prime factor, so start again
             {
@@ -53,13 +54,33 @@ public class Main {
                 curPrime=2;
             }
             else{ //otherwise move onto the next prime number
-                curPrime=primeMethods.nextPrime(curPrime);
+                curPrime= helperMethods.nextPrime(curPrime);
             }
         }
         return target;
-
     }
+    private long problem4() //find the largest palindrom made from 2 3 digit numbers. Brute force method
+    {
+        int highest=0, iHigh=0, jHigh=0;
 
+        for(int i=999; i>0; i--)
+        {
+            for(int j=i; j>0; j--)
+            {
+                if(helperMethods.isPalindrome(i*j))
+                {
+                    if(i*j > highest)
+                    {
+                        highest = i*j;
+                        iHigh = i;
+                        jHigh = j;
+                    }
+                }
+            }
+        }
+        //System.out.println(iHigh + " * " + jHigh); //Just wanted to check what the factors were, not needed for answer however
+        return highest;
+    }
 
 }
 

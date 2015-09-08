@@ -2,18 +2,21 @@ package com.Callum.Practice;
 
 /**
  * Created by Callum on 6/09/2015.
+ *
+ * This is a class which will not contain any permanent code, I just use it
+ * to quickly check the output of things I am not sure about
  */
 public class testMethods
 {
     public static void main(String[] args)
     {
-        PrimeMethods primeMethods = new PrimeMethods();
-        long cur = 2;
+        HelperMethods helperMethods = new HelperMethods();
 
-        for(int i=1; i<=100; i++)
-        {
-            System.out.println(i + " " + cur);
-            cur = primeMethods.nextPrime(cur);
-        }
+        long x = 12345678987654321L, y = 12345, z = 9022309;
+
+        System.out.println(helperMethods.isPalindrome(x));
+        System.out.println(helperMethods.isPalindrome(y));
+        System.out.println(helperMethods.isPalindrome(z));
+
     }
 }
