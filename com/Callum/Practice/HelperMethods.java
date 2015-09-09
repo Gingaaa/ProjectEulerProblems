@@ -20,7 +20,6 @@ public class HelperMethods
         }
         return true;
     }
-
     protected long nextPrime(long cur)
     {
         if(cur == 2)
@@ -30,30 +29,6 @@ public class HelperMethods
             next += 2;
         return next;
     }
-
-    protected boolean isPalindrome(long n)
-    {
-        String nAsString = Long.toString(n);
-        int i=0, j=nAsString.length()-1; //the first and last positions of the palindrome in the string array
-        while(i<=j) //Deals with even and odd length palindromes
-        {
-            if(nAsString.substring(i,i+1).equals(nAsString.substring(j,j+1)))
-            {
-                i++;
-                j--;
-            }else
-                return false;
-        }
-        return true;
-    }
-
-    protected int gcd(int a, int b)
-    {
-        if(b==0)
-            return a;
-        return gcd(b, a%b);
-    }
-
     protected ArrayList<Long> primeFactors(long target) //find the prime factors of the target
     {
         long curPrime=2;
@@ -73,4 +48,33 @@ public class HelperMethods
         primeFactors.add(target); //the target is now the last prime factor so add to end of array
         return primeFactors;
     }
+
+    protected boolean isPalindrome(long n)
+    {
+        String nAsString = Long.toString(n);
+        int i=0, j=nAsString.length()-1; //the first and last positions of the palindrome in the string array
+        while(i<=j) //Deals with even and odd length palindromes
+        {
+            if(nAsString.substring(i,i+1).equals(nAsString.substring(j,j+1)))
+            {
+                i++;
+                j--;
+            }else
+                return false;
+        }
+        return true;
+    }
+
+    protected long gcd(long a, long b)
+    {
+        if(b==0)
+            return a;
+        return gcd(b, a%b);
+    }
+    protected long lcm(long a, long b)
+    {
+        return (a*b)/gcd(a,b);
+    }
+
+
 }

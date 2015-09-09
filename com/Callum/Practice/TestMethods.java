@@ -12,8 +12,10 @@ public class TestMethods
     {
         HelperMethods helperMethods = new HelperMethods();
 
-        int x = helperMethods.gcd(48, 18);
-        System.out.print(x);
+        long x = helperMethods.gcd(380, 260);
+        long y = helperMethods.lcm(260,220);
+        System.out.println(x);
+        System.out.println(y);
 
     }
 }

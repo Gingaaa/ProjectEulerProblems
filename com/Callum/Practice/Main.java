@@ -15,10 +15,10 @@ public class Main
 	    System.out.print(run.problem3());
 	    System.out.print(run.problem4());
 	     */
-        System.out.print(run.problem3());
+        System.out.println(run.problem5());
     }
-
-    private long problem1(){
+    private long problem1()
+    {
         long sum=0, target=1000;
         for(int i=0;i<target;i++)
         {
@@ -47,7 +47,7 @@ public class Main
         ArrayList<Long> primeFactors = new ArrayList<Long>(helperMethods.primeFactors(target));
         return primeFactors.get(primeFactors.size()-1); //return the last item in the list which should be the largest
     }
-    private long problem4() //find the largest palindrom made from 2 3 digit numbers. Brute force method
+    private long problem4() //find the largest palindrome made from 2 3 digit numbers. Brute force method
     {
         int highest=0, iHigh=0, jHigh=0;
 
@@ -71,6 +71,22 @@ public class Main
         //System.out.println(iHigh + " * " + jHigh); //Just wanted to check what the factors were, not needed for answer however
         return highest;
     }
-
+    private long problem5() //find the least common multiplier of all integers up to 20
+    {
+        long a=380,b=340,c=260,d=220,e=180,f=140,g=80; //Check book of problem solving to find out how I got these numbers, basically all other factors can reduce to these 20*(19,17,13,11,9,7,4)
+        return helperMethods.lcm(a,helperMethods.lcm(b,helperMethods.lcm(c,helperMethods.lcm(d,helperMethods.lcm(e,helperMethods.lcm(f,g))))));
+    }
+    private long problem5b() //brute force, 115 times slower than other method
+    {
+        long n=20;
+        while(true)
+        {
+            if(n%19 == 0 && n%18 == 0 && n%17 == 0 && n%16 == 0 && n%14 == 0 && n%13 == 0 && n%12 == 0 && n%11 == 0 && n%9 == 0 && n%8 == 0 && n%7 == 0 && n%6 == 0 && n%4 == 0 && n%3 == 0)
+                return n;
+            else{
+                n+=20;
+            }
+        }
+    }
 }
 
