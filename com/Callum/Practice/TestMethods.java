@@ -12,11 +12,8 @@ public class TestMethods
     {
         HelperMethods helperMethods = new HelperMethods();
 
-        long x = 12345678987654321L, y = 12345, z = 9022309;
-
-        System.out.println(helperMethods.isPalindrome(x));
-        System.out.println(helperMethods.isPalindrome(y));
-        System.out.println(helperMethods.isPalindrome(z));
+        int x = helperMethods.gcd(48, 18);
+        System.out.print(x);
 
     }
 }

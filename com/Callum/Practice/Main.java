@@ -1,5 +1,7 @@
 package com.Callum.Practice;
 
+import java.util.ArrayList;
+
 public class Main
 {
     HelperMethods helperMethods = new HelperMethods();
@@ -11,12 +13,9 @@ public class Main
 	    System.out.print(run.problem1());
 	    System.out.print(run.problem2());
 	    System.out.print(run.problem3());
+	    System.out.print(run.problem4());
 	     */
-        System.out.print(run.problem4());
-
-
-
-
+        System.out.print(run.problem3());
     }
 
     private long problem1(){
@@ -44,20 +43,9 @@ public class Main
     }
     private long problem3() //find the prime factors of the target
     {
-        long target=600851475143L, curPrime=2;
-
-        while(!helperMethods.isPrime(target)) //If the target is a prime, it is the final and largest prime factor
-        {
-            if(target%curPrime == 0) //if the target divides evenly then that prime is a prime factor, so start again
-            {
-                target = target / curPrime;
-                curPrime=2;
-            }
-            else{ //otherwise move onto the next prime number
-                curPrime= helperMethods.nextPrime(curPrime);
-            }
-        }
-        return target;
+        long target=600851475143L;
+        ArrayList<Long> primeFactors = new ArrayList<Long>(helperMethods.primeFactors(target));
+        return primeFactors.get(primeFactors.size()-1); //return the last item in the list which should be the largest
     }
     private long problem4() //find the largest palindrom made from 2 3 digit numbers. Brute force method
     {

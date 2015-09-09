@@ -1,5 +1,7 @@
 package com.Callum.Practice;
 
+import java.util.ArrayList;
+
 /**
  * Created by Callum on 6/09/2015.
  *
@@ -43,5 +45,32 @@ public class HelperMethods
                 return false;
         }
         return true;
+    }
+
+    protected int gcd(int a, int b)
+    {
+        if(b==0)
+            return a;
+        return gcd(b, a%b);
+    }
+
+    protected ArrayList<Long> primeFactors(long target) //find the prime factors of the target
+    {
+        long curPrime=2;
+        ArrayList<Long> primeFactors = new ArrayList<Long>();
+        while(!isPrime(target)) //If the target is a prime, it is the final and largest prime factor
+        {
+            if(target%curPrime == 0) //if the target divides evenly then that prime is a prime factor, so start again
+            {
+                primeFactors.add(curPrime);
+                target = target / curPrime;
+                curPrime=2;
+            }
+            else{ //otherwise move onto the next prime number
+                curPrime=nextPrime(curPrime);
+            }
+        }
+        primeFactors.add(target); //the target is now the last prime factor so add to end of array
+        return primeFactors;
     }
 }
