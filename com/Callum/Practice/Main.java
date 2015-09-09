@@ -15,7 +15,7 @@ public class Main
 	    System.out.print(run.problem3());
 	    System.out.print(run.problem4());
 	     */
-        System.out.println(run.problem5());
+        System.out.println(run.problem6());
     }
     private long problem1()
     {
@@ -87,6 +87,18 @@ public class Main
                 n+=20;
             }
         }
+    }
+    private long problem6()  //Find the difference between the sum of the squares of the first one hundred natural numbers and the square of the sum
+    {
+        long sumSquares=0, squareSum=0;
+
+        for(int i=1; i<101; i++)
+        {
+            sumSquares += i*i;
+            squareSum = squareSum + i;
+        }
+        squareSum = squareSum * squareSum;
+        return squareSum - sumSquares;
     }
 }
 
