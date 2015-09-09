@@ -14,8 +14,10 @@ public class Main
 	    System.out.print(run.problem2());
 	    System.out.print(run.problem3());
 	    System.out.print(run.problem4());
+	    System.out.print(run.problem5());
+	    System.out.print(run.problem6());
 	     */
-        System.out.println(run.problem6());
+        System.out.print(run.problem7());
     }
     private long problem1()
     {
@@ -89,7 +91,7 @@ public class Main
         }
     }
     private long problem6()  //Find the difference between the sum of the squares of the first one hundred natural numbers and the square of the sum
-    {
+    { //brute force
         long sumSquares=0, squareSum=0;
 
         for(int i=1; i<101; i++)
@@ -99,6 +101,15 @@ public class Main
         }
         squareSum = squareSum * squareSum;
         return squareSum - sumSquares;
+    }
+    private long problem7() //Find the 10001st prime
+    {
+        long curPrime=2;
+        for(int i=0; i<10000; i++) //already found the first prime(2) so do 10000 more times
+        {
+            curPrime = helperMethods.nextPrime(curPrime);
+        }
+        return curPrime;
     }
 }
 
