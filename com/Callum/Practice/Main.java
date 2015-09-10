@@ -16,8 +16,9 @@ public class Main
 	    System.out.print(run.problem4());
 	    System.out.print(run.problem5());
 	    System.out.print(run.problem6());
+	    System.out.print(run.problem7());
 	     */
-        System.out.print(run.problem7());
+        System.out.print(run.problem8());
     }
     private long problem1()
     {
@@ -46,7 +47,7 @@ public class Main
     private long problem3() //find the prime factors of the target
     {
         long target=600851475143L;
-        ArrayList<Long> primeFactors = new ArrayList<Long>(helperMethods.primeFactors(target));
+        ArrayList<Long> primeFactors = new ArrayList<>(helperMethods.primeFactors(target));
         return primeFactors.get(primeFactors.size()-1); //return the last item in the list which should be the largest
     }
     private long problem4() //find the largest palindrome made from 2 3 digit numbers. Brute force method
@@ -75,8 +76,9 @@ public class Main
     }
     private long problem5() //find the least common multiplier of all integers up to 20
     {
+        //This is obviously not a reusable way to solve this problem
         long a=380,b=340,c=260,d=220,e=180,f=140,g=80; //Check book of problem solving to find out how I got these numbers, basically all other factors can reduce to these 20*(19,17,13,11,9,7,4)
-        return helperMethods.lcm(a,helperMethods.lcm(b,helperMethods.lcm(c,helperMethods.lcm(d,helperMethods.lcm(e,helperMethods.lcm(f,g))))));
+        return helperMethods.lcm(a,helperMethods.lcm(b,helperMethods.lcm(c,helperMethods.lcm(d,helperMethods.lcm(e,helperMethods.lcm(f,g)))))); //Can make this into recursive method if needed again
     }
     private long problem5b() //brute force, 115 times slower than other method
     {
@@ -85,9 +87,8 @@ public class Main
         {
             if(n%19 == 0 && n%18 == 0 && n%17 == 0 && n%16 == 0 && n%14 == 0 && n%13 == 0 && n%12 == 0 && n%11 == 0 && n%9 == 0 && n%8 == 0 && n%7 == 0 && n%6 == 0 && n%4 == 0 && n%3 == 0)
                 return n;
-            else{
+            else
                 n+=20;
-            }
         }
     }
     private long problem6()  //Find the difference between the sum of the squares of the first one hundred natural numbers and the square of the sum
@@ -106,10 +107,32 @@ public class Main
     {
         long curPrime=2;
         for(int i=0; i<10000; i++) //already found the first prime(2) so do 10000 more times
-        {
             curPrime = helperMethods.nextPrime(curPrime);
-        }
         return curPrime;
     }
+    private long problem8()  //Find the largest product using adjacent numbers from a single large number
+    {   //brute force
+        long product=1, highestProduct=0; //Use product=1 to simplify for loop
+        int reqDigits=13; //The number of adjacent digits to multiply
+        char[] chars = StaticVariables.PROBLEM8NUM.toCharArray();
+        int startIndex=0;
+
+        int i=0;
+        while(i+reqDigits <= chars.length)
+        {
+            for(int j=0;j<reqDigits;j++)
+                product = product* Character.getNumericValue(chars[i+j]);
+            if(product > highestProduct)
+            {
+                highestProduct = product;
+                startIndex=i;
+            }
+            product=1;
+            i++;
+        }
+        //System.out.println(StaticVariables.PROBLEM8NUM.substring(startIndex,startIndex + reqDigits)); //Prints the digits that make up highestProduct
+        return highestProduct;
+    }
+
 }
 

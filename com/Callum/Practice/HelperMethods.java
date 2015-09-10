@@ -11,6 +11,8 @@ public class HelperMethods
 {
     protected boolean isPrime(long n)
     {
+        if(n==1)
+            return false;
         if(n%2==0)
             return false;
         for(int i=3; i*i<=n; i+=2)
@@ -25,6 +27,8 @@ public class HelperMethods
         if(cur == 2)
             return 3;
         long next = cur+2;
+        if(next%2 == 0)
+            next -= 1;
         while(!isPrime(next))
             next += 2;
         return next;
@@ -32,7 +36,7 @@ public class HelperMethods
     protected ArrayList<Long> primeFactors(long target) //find the prime factors of the target
     {
         long curPrime=2;
-        ArrayList<Long> primeFactors = new ArrayList<Long>();
+        ArrayList<Long> primeFactors = new ArrayList<>();
         while(!isPrime(target)) //If the target is a prime, it is the final and largest prime factor
         {
             if(target%curPrime == 0) //if the target divides evenly then that prime is a prime factor, so start again

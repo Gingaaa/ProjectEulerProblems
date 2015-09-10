@@ -12,10 +12,9 @@ public class TestMethods
     {
         HelperMethods helperMethods = new HelperMethods();
 
-        long x = helperMethods.gcd(380, 260);
-        long y = helperMethods.lcm(260,220);
-        System.out.println(x);
-        System.out.println(y);
+
+        //System.out.println(helperMethods.nextPrime(2222222222L));
+        //System.out.println(helperMethods.nextPrime(8831));
 
     }
 }
