@@ -17,8 +17,9 @@ public class Main
 	    System.out.print(run.problem5());
 	    System.out.print(run.problem6());
 	    System.out.print(run.problem7());
+	    System.out.print(run.problem8());
 	     */
-        System.out.print(run.problem8());
+        System.out.print(run.problem9());
     }
     private long problem1()
     {
@@ -133,6 +134,14 @@ public class Main
         //System.out.println(StaticVariables.PROBLEM8NUM.substring(startIndex,startIndex + reqDigits)); //Prints the digits that make up highestProduct
         return highestProduct;
     }
-
+    private long problem9()
+    {
+        int sum=1000;
+        for(int a=1; a<=sum/3; a++)
+            for(int b=a+1;b<(sum-b-a);b++)
+                if((a*a)+(b*b) == ((sum-b-a)*(sum-b-a)))
+                    return a*b*(sum-b-a);
+        return 0;
+    }
 }
 
