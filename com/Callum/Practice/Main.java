@@ -1,6 +1,7 @@
 package com.Callum.Practice;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Main
 {
@@ -19,8 +20,9 @@ public class Main
 	    System.out.print(run.problem7());
 	    System.out.print(run.problem8());
 	    System.out.print(run.problem9());
+	    System.out.print(run.problem10());
 	     */
-        System.out.print(run.problem10());
+        System.out.print(run.problem11());
     }
     private long problem1()
     {
@@ -155,6 +157,23 @@ public class Main
             curPrime = helperMethods.nextPrime(curPrime);
         }
         return sum;
+    }
+    private long problem11()  //Find the largest product of 4 numbers in a 20x20 2digit grid in any direction
+    {
+        String num = StaticVariables.PROBLEM11NUM.replaceAll("\\s",""); //removes the spaces in the number for simpler processing\
+        int[][] numArray = new int[20][20];
+        int index=0,rows=20,sum=0;
+
+        for(int i=0;i<rows;i++)  //Puts the subsequent 2 digits from the large num into the 2d array
+            for(int j=0;j<rows;j++)
+            {
+                numArray[i][j]=Integer.parseInt(num.substring(index,index+2));
+                index+=2;
+            }
+
+        System.out.println(Arrays.deepToString(numArray));
+        return 0;
+
     }
 }
 
