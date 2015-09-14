@@ -1,0 +1,22 @@
+  private long problem9(){
+    int sum=1000;
+    for(int a=1; a<=sum/3; a++){
+      for(int b=a+1;b<=sum/2; b++){
+        int c = sum-b-a;
+        if(a*a + b*b == c*c)
+          return a*b*c;
+      }
+    }
+    return 0;
+  }
+  
+    private long problem9b(){
+    int sum=1000;
+    for(int a=1; a<=sum/3; a++){
+      for(int b=a+1;b<=sum-b-a; b++){
+        if(a*a + b*b == (sum-b-a)*(sum-b-a))
+          return a*b*(sum-b-a);
+      }
+    }
+    return 0;
+  }
