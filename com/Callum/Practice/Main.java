@@ -171,7 +171,6 @@ public class Main
                 index+=2;
             }
 
-        int[] multiples = new int[4];
         for(int i=0;i<rows;i++)
         {
             for(int j=0;j<rows;j++)
