@@ -162,7 +162,7 @@ public class Main
     {
         String num = StaticVariables.PROBLEM11NUM.replaceAll("\\s",""); //removes the spaces in the number for simpler processing\
         int[][] numArray = new int[20][20];
-        int index=0,rows=20,sum=0;
+        int index=0,rows=20,maxSum=0,sum=0;
 
         for(int i=0;i<rows;i++)  //Puts the subsequent 2 digits from the large num into the 2d array
             for(int j=0;j<rows;j++)
@@ -171,9 +171,35 @@ public class Main
                 index+=2;
             }
 
-        System.out.println(Arrays.deepToString(numArray));
-        return 0;
-
+        int[] multiples = new int[4];
+        for(int i=0;i<rows;i++)
+        {
+            for(int j=0;j<rows;j++)
+            {   //2 ways I can do this, try catch for every check, or one try catch but with more complex code (while loop and switch block) to check every direction
+                //Initially use multiple try catches to make sure code actually works first
+                try
+                {   //check upDiag
+                    if((numArray[i][j]*numArray[i-1][j+1]*numArray[i-2][j+2]*numArray[i-3][j+3]) > maxSum)
+                        maxSum = (numArray[i][j]*numArray[i-1][j+1]*numArray[i-2][j+2]*numArray[i-3][j+3]);
+                }catch(ArrayIndexOutOfBoundsException e){}  //Just ignore this sum and carry on
+                try
+                {   //check right
+                    if((numArray[i][j]*numArray[i][j+1]*numArray[i][j+2]*numArray[i][j+3]) > maxSum)
+                        maxSum = (numArray[i][j]*numArray[i][j+1]*numArray[i][j+2]*numArray[i][j+3]);
+                }catch(ArrayIndexOutOfBoundsException e){}  //Just ignore this sum and carry on
+                try
+                {   //check downDiag
+                    if((numArray[i][j]*numArray[i+1][j+1]*numArray[i+2][j+2]*numArray[i+3][j+3]) > maxSum)
+                        maxSum = (numArray[i][j]*numArray[i+1][j+1]*numArray[i+2][j+2]*numArray[i+3][j+3]);
+                }catch(ArrayIndexOutOfBoundsException e){}  //Just ignore this sum and carry on
+                try
+                {   //check down
+                    if((numArray[i][j]*numArray[i+1][j]*numArray[i+2][j]*numArray[i+3][j]) > maxSum)
+                        maxSum = (numArray[i][j]*numArray[i+1][j]*numArray[i+2][j]*numArray[i+3][j]);
+                }catch(ArrayIndexOutOfBoundsException e){}  //Just ignore this sum and carry on
+            }
+        }
+        return maxSum;
     }
 }
 
