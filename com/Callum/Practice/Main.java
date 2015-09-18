@@ -10,6 +10,7 @@ public class Main
     public static void main(String[] args)
     {
         Main run = new Main();
+        long start, startNs;
 	    /*
 	    System.out.print(run.problem1());
 	    System.out.print(run.problem2());
@@ -21,10 +22,18 @@ public class Main
 	    System.out.print(run.problem8());
 	    System.out.print(run.problem9());
 	    System.out.print(run.problem10());
+	    System.out.print(run.problem11());
 	     */
-        System.out.print(run.problem11());
+        start = System.currentTimeMillis();
+        startNs = System.nanoTime();
+
+        System.out.println(run.problem11());
+
+        System.out.println("Completed in:");
+        System.out.println(System.currentTimeMillis()-start+"ms");
+        System.out.println(System.nanoTime()-startNs+"ns");
     }
-    private long problem1()
+    private long problem1()  //the sum of multiples of 3 or 5 below 1000
     {
         long sum=0, target=1000;
         for(int i=0;i<target;i++)
@@ -34,7 +43,7 @@ public class Main
         }
         return sum;
     }
-    private long problem2()
+    private long problem2()  //Sum the even fib sequence values under 4million
     {
         long sum=0, target=4000000, x=0, y=1, result;
         while(y<target)//y is larger value so will exceed target first
@@ -98,8 +107,9 @@ public class Main
     private long problem6()  //Find the difference between the sum of the squares of the first one hundred natural numbers and the square of the sum
     { //brute force
         long sumSquares=0, squareSum=0;
+        int target = 100;
 
-        for(int i=1; i<101; i++)
+        for(int i=1; i<=target; i++)
         {
             sumSquares += i*i;
             squareSum = squareSum + i;
@@ -160,9 +170,9 @@ public class Main
     }
     private long problem11()  //Find the largest product of 4 numbers in a 20x20 2digit grid in any direction
     {
-        String num = StaticVariables.PROBLEM11NUM.replaceAll("\\s",""); //removes the spaces in the number for simpler processing\
+        String num = StaticVariables.PROBLEM11NUM.replaceAll("\\s",""); //removes the spaces in the number for simpler processing
         int[][] numArray = new int[20][20];
-        int index=0,rows=20,maxSum=0,sum=0;
+        int index=0,rows=20,maxSum=0;
 
         for(int i=0;i<rows;i++)  //Puts the subsequent 2 digits from the large num into the 2d array
             for(int j=0;j<rows;j++)
