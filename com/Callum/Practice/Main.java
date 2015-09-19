@@ -1,5 +1,6 @@
 package com.Callum.Practice;
 
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -23,11 +24,12 @@ public class Main
 	    System.out.print(run.problem9());
 	    System.out.print(run.problem10());
 	    System.out.print(run.problem11());
+	    System.out.print(run.problem12());
 	     */
         start = System.currentTimeMillis();
         startNs = System.nanoTime();
 
-        System.out.println(run.problem12());
+        System.out.println(run.problem13());
 
         System.out.println("Completed in:");
         System.out.println(System.currentTimeMillis()-start+"ms");
@@ -220,6 +222,20 @@ public class Main
             i++;
         }
         return triangleSum;
+    }
+    private BigInteger problem13()  //Find the first 10 digits of a large sum
+    {  //This is the easiest way to solve. However it could be done without BigIntegers
+        // Only the first 11 digits of each number need to be added as the 12th will never affect anything more than the 11th
+        String num = StaticVariables.PROBLEM13NUM;
+        int numLength=50, numOfNums=100, index=0;
+        BigInteger result = new BigInteger("0");
+        System.out.println(result);
+        for(int i=0; i<numOfNums; i++)
+        {
+            result = result.add(new BigInteger(num.substring(index, index+numLength)));
+            index+=numLength;
+        }
+        return result;
     }
 }
 
