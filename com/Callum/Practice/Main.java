@@ -27,7 +27,7 @@ public class Main
         start = System.currentTimeMillis();
         startNs = System.nanoTime();
 
-        System.out.println(run.problem11());
+        System.out.println(run.problem12());
 
         System.out.println("Completed in:");
         System.out.println(System.currentTimeMillis()-start+"ms");
@@ -209,6 +209,17 @@ public class Main
             }
         }
         return maxSum;
+    }
+    private long problem12()  //Find the first triangle number that has over 500 factors
+    {  //brute force. Another way would be to use prime factors.
+       // Find prime factors of number, for each unique prime add 1 + the number of duplicates then multiply together. This equals the number of divisors for that number.
+        long triangleSum=0, i=1;
+        while(helperMethods.numFactors(triangleSum) <= 500)
+        {
+            triangleSum+=i;
+            i++;
+        }
+        return triangleSum;
     }
 }
 

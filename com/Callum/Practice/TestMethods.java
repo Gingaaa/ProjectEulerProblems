@@ -11,10 +11,13 @@ public class TestMethods
     public static void main(String[] args)
     {
         HelperMethods helperMethods = new HelperMethods();
-
-
-        //System.out.println(helperMethods.nextPrime(2222222222L));
-        //System.out.println(helperMethods.nextPrime(8831));
-
+        TestMethods run = new TestMethods();
+        int triangleSum=0, target=20;
+        for(int i=1;i<=target;i++)
+        {
+            triangleSum+=i;
+            System.out.println("Factors: " + triangleSum+": "+helperMethods.factors(triangleSum));
+            System.out.println("PrimeFactors " + triangleSum+": "+helperMethods.primeFactors(triangleSum));
+        }
     }
 }
