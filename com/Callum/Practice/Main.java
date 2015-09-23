@@ -3,6 +3,7 @@ package com.Callum.Practice;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 
 public class Main
 {
@@ -25,11 +26,12 @@ public class Main
 	    System.out.print(run.problem10());
 	    System.out.print(run.problem11());
 	    System.out.print(run.problem12());
+	    System.out.print(run.problem13());
 	     */
         start = System.currentTimeMillis();
         startNs = System.nanoTime();
 
-        System.out.println(run.problem13());
+        System.out.println(run.problem14());
 
         System.out.println("Completed in:");
         System.out.println(System.currentTimeMillis()-start+"ms");
@@ -236,6 +238,38 @@ public class Main
             index+=numLength;
         }
         return result;
+    }
+    private int problem14()  //Find the longest Collatz sequence under 1million
+    {   //I found that using a hashmap actually slowed down the program by a fair amount.  ~200ms->1000ms, not entirely sure why
+        int count, maxCount=0, maxNum=0, target=1000000;
+        long n;
+        HashMap<Integer, Integer> cache = new HashMap<>();
+
+        for(int i=target/2+1; i<target; i+=2)  //All even numbers eventually become a smaller odd, so no point checking even.
+        {                                      //All numbers below half the target will be included in a number double that so start from half way.
+            count=0;
+            n=i;
+            while(n != 1)
+            {
+                count++;
+                if(cache.containsKey(n))
+                    count = count + cache.get(i);
+                else
+                {
+                    if(n%2 == 0)
+                        n=n/2;
+                    else
+                        n=n*3+1;
+                }
+            }
+            cache.put(i, count);
+            if(count > maxCount)
+            {
+                maxCount=count;
+                maxNum=i;
+            }
+        }
+        return maxNum;
     }
 }
 
