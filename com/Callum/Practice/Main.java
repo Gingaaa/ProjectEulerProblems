@@ -240,32 +240,32 @@ public class Main
         return result;
     }
     private int problem14()  //Find the longest Collatz sequence under 1million
-    {   //I found that using a hashmap actually slowed down the program by a fair amount.  ~200ms->1000ms, not entirely sure why
+    {   //Use of integer cache results in run time of ~20ms, faster than brute force ~200ms
         int count, maxCount=0, maxNum=0, target=1000000;
         long n;
-        HashMap<Integer, Integer> cache = new HashMap<>();
 
-        for(int i=target/2+1; i<target; i+=2)  //All even numbers eventually become a smaller odd, so no point checking even.
-        {                                      //All numbers below half the target will be included in a number double that so start from half way.
+        int[] cache = new int[target+1];
+        for(int i=0; i<cache.length;i++)    //Initialise cache
+            cache[i] = -1;
+        cache[1]=0;
+
+        for(int i=2; i<=target; i++)
+        {
             count=0;
             n=i;
-            while(n != 1)
-            {
+            while(n != 1 && n >= i) //The result of n will be in the cache if it is less than i
+            {   //The Collatz logic
                 count++;
-                if(cache.containsKey(n))
-                    count = count + cache.get(i);
+                if(n%2 == 0)
+                    n=n/2;
                 else
-                {
-                    if(n%2 == 0)
-                        n=n/2;
-                    else
-                        n=n*3+1;
-                }
+                    n=n*3+1;
             }
-            cache.put(i, count);
-            if(count > maxCount)
+            if(cache[(int)n] != -1)
+                cache[i] = count + cache[(int) n]; //Store result in cache, adds the current to the previously calculated sequence count
+            if(cache[i] > maxCount)
             {
-                maxCount=count;
+                maxCount=cache[i];
                 maxNum=i;
             }
         }
